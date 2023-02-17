@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -36,3 +37,13 @@
     transform: rotate(360deg);
   }
 }
+
+.maldives{
+
+  background-image: url('G:\travelopia\src\maldives.jpg');
+}
+.beach{
+
+  background-image: url('G:\travelopia\beach.jpg');
+}
+
