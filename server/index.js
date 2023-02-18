@@ -1,12 +1,12 @@
 var express = require("express");
+const { fetchdata, addData } = require("./app");
+const cors = require("cors");
+
 var app = express();
 var PORT = 8000;
 
-const fetchdata = require("./app");
-const addData = require("./app");
-var cors = require("cors");
-
 app.use(cors());
+app.use(express.json());
 
 app.get("/fetch", fetchdata);
 app.post("/add", addData);

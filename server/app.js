@@ -15,19 +15,24 @@ client
   .catch((e) => console.log("db connected " + e));
 
 const fetchdata = async (req, res) => {
+  console.log("hitted fetch");
   const result = await client.query("select * from client_info");
 
   res.json(result.rows);
 };
 
 const addData = async (req, res) => {
-  const { firstName, email } = req.body;
-
+  const { name = "", email = "", desti = "", not = "", budget = "" } = req.body;
+  console.log("hitted add");
   const result = await client.query(`insert into client_info(
-	name, email, desti, "not", budget, tot_budget)
-	VALUES ('${firstName}', '${email}', 'mysore', '2', '3000', '6000') RETURNING *`);
+	name, email, desti, "not", budget)
+	VALUES ('${name}', '${email}', '${desti}', '${not}', '${budget}') RETURNING *`);
   console.log(result.rows);
   console.log(result.rowCount);
+  res.send("added");
 };
 
-module.exports = [fetchdata, addData];
+module.exports = {
+  addData,
+  fetchdata,
+};
